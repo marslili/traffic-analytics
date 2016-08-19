@@ -1,0 +1,52 @@
+@charset "UTF-8";
+html * {
+  max-height: 1000000px;
+}
+
+body {
+  padding-top: 70px;
+}
+
+#main {
+  min-height: 600px;
+}
+
+#panel-filter {
+  height: 650px;
+}
+
+#panel-map .panel-body {
+  padding: 0;
+}
+
+#map {
+  height: 580px;
+}
+
+.text-center {
+  padding-top: 2em;
+}
+
+#slider-interval {
+  width: 100%;
+}
+
+#slider-interval .slider-selection {
+  background: #b2dbfb;
+}
+
+#panel-filter {
+  padding-right: 2em;
+}
+
+#panel-filter>.row {
+  margin-bottom: 1.5em;
+}
+
+#panel-filter>.row>label {
+  margin-right: 1em;
+}
+
+#month label.btn {
+  padding: 6px;
+}
