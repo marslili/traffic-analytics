@@ -14,11 +14,15 @@
   <!-- Bootstrap Core CSS -->
   <link href="css/sandstone/bootstrap.min.css?v=20160820" rel="stylesheet">
 
-  <!-- bootstrap-slider CSS-->
+  <!-- bootstrap-slider CSS -->
   <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.3/css/bootstrap-slider.min.css" rel="stylesheet">
+  
+  <!--  bootstrap-datepicker -->
+  <link href="css/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
+  
 
   <!-- Custom CSS -->
-  <link href="css/main.css?v=20160819" rel="stylesheet">
+  <link href="css/main.min.css?v=20160822" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,17 +106,23 @@
                 </div>
                 <!-- /類別 -->
                 <!-- 月份 -->
-                <div class="row text-left">
+                <div id="month" class="row text-left">
                   <label>月份</label>
-                  <div id="month" class="btn-group btn-group-justified sync" data-toggle="buttons"></div>
+                  <div class="btn-group btn-group-justified sync" data-toggle="buttons"></div>
                 </div>
                 <!-- /月份 -->
                 <!-- 星期 -->
-                <div class="row text-left">
+                <div id="week" class="row text-left">
                   <label>星期</label>
-                  <div id="week" class="btn-group btn-group-justified" data-toggle="buttons"></div>
+                  <div class="btn-group btn-group-justified" data-toggle="buttons"></div>
                 </div>
                 <!-- /星期 -->
+                <!-- 日期 -->
+                <div id="calendar" class="row text-left hide">
+                  <label>日期</label>
+                  <div></div>
+                </div>
+                <!-- /日期-->
                 <!-- 時段 -->
                 <div class="row text-left">
                   <label>時段</label>
@@ -173,7 +183,7 @@
     var map;
 
     function initMap() {
-      console.log('init')
+      console.log('map init')
       map = new google.maps.Map(document.getElementById('map'), {
         center: {
           lat: 25.041650,
@@ -193,8 +203,11 @@
 
   <!-- bootstrap-slider JavaScript-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.3/bootstrap-slider.min.js"></script>
+  
+  <!-- bootstrap-datepicker -->
+  <script src="js/bootstrap-datepicker.min.js"></script>
 
-  <script src="js/main.js?v=20160819"></script>
+  <script src="js/main.min.js?v=20160822"></script>
 
 </body>
 

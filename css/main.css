@@ -1,11 +1,12 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 * {
-  font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
+  font-family: Arial, '文泉驛正黑', 'WenQuanYi Zen Hei', '儷黑 Pro', 'LiHei Pro', '微軟正黑體', 'Microsoft JhengHei', '標楷體', DFKai-SB, sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; 
-  letter-spacing: 3px;
+  box-sizing: border-box;
+  letter-spacing: 1.5px;
 }
+
 html * {
   max-height: 1000000px;
 }
@@ -18,8 +19,8 @@ body {
   min-height: 650px;
 }
 
-#panel-filter {
-  height: 650px;
+#calendar .datepicker {
+  margin: 0 auto;
 }
 
 #panel-map .panel-body {

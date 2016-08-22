@@ -2,6 +2,34 @@
 
   'use strict'
 
+  $.fn.datepicker.dates['zh-TW'] = {
+    days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+    daysShort: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
+    daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    monthsShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    today: '今天',
+    format: 'yyyy年mm月dd日',
+    weekStart: 1,
+    clear: '清除'
+  }
+
+  $.date = function (dateObject) {
+    var d = new Date(dateObject)
+    var day = d.getDate()
+    var month = d.getMonth() + 1
+    var year = d.getFullYear()
+    if (day < 10) {
+      day = "0" + day
+    }
+    if (month < 10) {
+      month = "0" + month
+    }
+    var date = year + "/" + month + "/" + day
+
+    return date
+  }
+
   var state = {
     category: "normal",
     month: 1,
@@ -9,7 +37,8 @@
     interval: [9, 17],
     oilprice: "1",
     rainfall: "1",
-    temperature: "1"
+    temperature: "1",
+    date: $.date(new Date())
   }
 
   var $month = $('#month')
@@ -26,6 +55,7 @@
     '</label>' +
     '</div>'
 
+  var $calendar = $('#calendar')
   var $rainfall = $('#rainfall')
   var $temperature = $('#temperature')
   var $oilprice = $('#oilprice')
@@ -39,13 +69,29 @@
 
     $('.nav-tabs a:first').tab('show')
 
+    $('#category').find('.btn').on('click', function () {
+      state['category'] = $(this).find('input[name="category"]').val()
+      switch (state['category']) {
+      case 'normal':
+        $month.removeClass('hide')
+        $week.removeClass('hide')
+        $calendar.addClass('hide')
+        break
+      case 'unusual':
+        $month.addClass('hide')
+        $week.addClass('hide')
+        $calendar.removeClass('hide')
+        break
+      }
+    })
+
     // 月份.
     var monthHtmlAry = []
 
     for (var i = 1; i < 13; i++) {
       monthHtmlAry.push(monthContent.replace(/#\{label\}/g, '' + i).replace(/#\{val\}/g, '' + i))
     }
-    $month.html(monthHtmlAry.join('')).children(':first').find('.btn').click()
+    $month.find('.btn-group').html(monthHtmlAry.join('')).children(':first').find('.btn').click()
 
     // 星期.
     var weekHtmlAry = []
@@ -54,7 +100,7 @@
     })
 
     // 預設禮拜一
-    $week.html(weekHtmlAry.join(''))
+    $week.find('.btn-group').html(weekHtmlAry.join(''))
       .find('.btn').on('click', function () {
         setTimeout(function () {
           syncWeekState()
@@ -126,6 +172,16 @@
     $('button[type="submit"]').on('click', function () {
       console.log(JSON.stringify(state))
     })
+
+    // 日期.
+    $calendar.find('div').datepicker({
+        language: "zh-TW",
+        format: "yyyy/mm/dd",
+        todayHighlight: true
+      })
+      .on('changeDate', function (e) {
+        state.date = e.format()
+      })
 
   })
 
