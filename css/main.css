@@ -7,6 +7,10 @@
   letter-spacing: 1.5px;
 }
 
+.hide-block{
+    visibility: hidden !important;
+}
+
 html * {
   max-height: 1000000px;
 }
@@ -23,12 +27,16 @@ body {
   margin: 0 auto;
 }
 
-#panel-map .panel-body {
+.panel-map .panel-body {
   padding: 0;
 }
 
-#map {
+#traffic-map {
   height: 610px;
+}
+
+#vd-map, #chart{
+  height: 300px;
 }
 
 .text-center {
@@ -47,8 +55,8 @@ body {
   padding-right: 2em;
 }
 
-#panel-filter>.row {
-  margin-bottom: 1.5em;
+.row {
+  margin-bottom: 1em;
 }
 
 #panel-filter>.row>label {
