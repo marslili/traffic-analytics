@@ -19,15 +19,13 @@
     var day = d.getDate()
     var month = d.getMonth() + 1
     var year = d.getFullYear()
-    if (day < 10) {
-      day = "0" + day
+    if(day < 10) {
+      day = '0' + day
     }
-    if (month < 10) {
-      month = "0" + month
+    if(month < 10) {
+      month = '0' + month
     }
-    var date = year + "/" + month + "/" + day
-
-    return date
+    return year + '/' + month + '/' + day
   }
 
   var state = {
@@ -39,10 +37,17 @@
     oilprice: '1',
     rainfall: '1',
     temperature: '1',
-    date: $.date(new Date())
+    type: 'year',
+    date: $.date(new Date()),
+    select: {
+      type: 'A',
+      road: 'A',
+      vd: 'A'
+    }
   }
-  window.state = state
 
+  // 月份.
+  var monthHtmlAry = []
   var $month = $('#month')
   var monthContent = '<div class="btn-group" role="group">' +
     '<label class="btn btn-primary">' +
@@ -70,12 +75,18 @@
 
   var $interval = $('#interval')
 
+  var rainfallHtmlAry = [] // 雨量.
+
+  var temperatureHtmlAry = [] // 氣溫.
+
+  var oilpriceHtmlAry = [] // 油價.
+
   jQuery(function ($) {
 
     $('.nav-tabs a:first').tab('show')
-    //$('.nav-tabs a:last').tab('show')
+      //$('.nav-tabs a:last').tab('show')
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      if (!VDMap) {
+      if(!VDMap) {
         VDMap = new google.maps.Map(document.getElementById('vd-map'), {
           center: {
             lat: 25.041650,
@@ -88,7 +99,7 @@
 
     $('#category').find('.btn').on('click', function () {
       state['category'] = $(this).find('input[name="category"]').val()
-      switch (state['category']) {
+      switch(state['category']) {
       case 'normal':
         $month.removeClass('hide')
         $week.removeClass('hide')
@@ -103,8 +114,7 @@
     })
 
     // 月份.
-    var monthHtmlAry = []
-    for (var i = 1; i < 13; i++) {
+    for(var i = 1; i < 13; i++) {
       monthHtmlAry.push(monthContent.replace(/#\{label\}/g, '' + i).replace(/#\{val\}/g, '' + i))
     }
     $month.find('.btn-group').html(monthHtmlAry.join('')).children(':first').find('.btn').click()
@@ -113,23 +123,23 @@
     $.map(weekAry, function (v, i) {
       weekHtmlAry.push(
         weekContent.replace(/#\{type\}/g, 'checkbox')
-                   .replace(/#\{name\}/g, 'week')
-                   .replace(/#\{label\}/g, v)
-                   .replace(/#\{val\}/g, i + 1)
+        .replace(/#\{name\}/g, 'week')
+        .replace(/#\{label\}/g, v)
+        .replace(/#\{val\}/g, i + 1)
       )
     })
 
     // 預設禮拜一
     $week.find('.btn-group').html(weekHtmlAry.join(''))
-          .find('.btn').on('click', function () {
-            setTimeout(function () {
-              state.week.length = 0
-              $week.find('.btn.active').find('input').each(function (index) {
-                state.week.push($(this).val())
-              })
-            }, 0)
-          }).end()
-          .children(':first').find('.btn').click()
+      .find('.btn').on('click', function () {
+        setTimeout(function () {
+          state.week.length = 0
+          $week.find('.btn.active').find('input').each(function (index) {
+            state.week.push($(this).val())
+          })
+        }, 0)
+      }).end()
+      .children(':first').find('.btn').click()
 
     // 時段.
     $interval.slider({
@@ -140,7 +150,7 @@
       tooltip: 'always',
       value: [9, 17],
       formatter: function formatter(val) {
-        if (Array.isArray(val)) {
+        if(Array.isArray(val)) {
           return val[0] + '點 ~ ' + val[1] + '點'
         } else {
           return val
@@ -153,43 +163,37 @@
     })
 
     // 雨量.
-    var rainfallHtmlAry = []
     $.map(['等級1', '等級2', '等級3', '等級4'], function (v, i) {
       rainfallHtmlAry.push(
         simpleContent
-          .replace(/#\{name\}/g, 'rainfall')
-          .replace(/#\{label\}/g, v)
-          .replace(/#\{val\}/g, i + 1)
+        .replace(/#\{name\}/g, 'rainfall')
+        .replace(/#\{label\}/g, v)
+        .replace(/#\{val\}/g, i + 1)
       )
     })
     $rainfall.html(rainfallHtmlAry.join(''))
 
     // 氣溫.
-    var temperatureHtmlAry = []
-
     $.map(['等級1', '等級2', '等級3', '等級4'], function (v, i) {
       temperatureHtmlAry.push(
         simpleContent
-          .replace(/#\{name\}/g, 'temperature')
-          .replace(/#\{label\}/g, v)
-          .replace(/#\{val\}/g, i + 1)
+        .replace(/#\{name\}/g, 'temperature')
+        .replace(/#\{label\}/g, v)
+        .replace(/#\{val\}/g, i + 1)
       )
     })
     $temperature.html(temperatureHtmlAry.join(''))
 
     // 油價.
-    var oilpriceHtmlAry = []
     $.map(['等級1', '等級2', '等級3', '等級4'], function (v, i) {
       oilpriceHtmlAry.push(
         simpleContent
-          .replace(/#\{name\}/g, 'oilprice')
-          .replace(/#\{label\}/g, v)
-          .replace(/#\{val\}/g, i + 1)
+        .replace(/#\{name\}/g, 'oilprice')
+        .replace(/#\{label\}/g, v)
+        .replace(/#\{val\}/g, i + 1)
       )
     })
     $oilprice.html(oilpriceHtmlAry.join(''))
-
-    syncState()
 
     // 搜尋.
     $('button[type="submit"]').on('click', function () {
@@ -206,17 +210,29 @@
         state.date = e.format()
       })
 
-    
+
     // --------- VD 微觀情形 ---------
-    $('.selectpicker').selectpicker({
-      style: 'btn-primary',
-      width: '85%',
-      size: 4
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      $('.selectpicker').selectpicker('mobile');
+    } else {
+      $('.selectpicker').selectpicker({
+        style: 'btn-primary',
+        width: '85%',
+        size: 4
+      })
+    }
+
+    $('.selectpicker').on('change', function (value) {
+      var $this = $(this);
+      state['select'][$this.data('select')] = $this.val()
+      console.log(state['select'][$this.data('select')])
     })
-    
+
+    // 類別.
     $('#type').find('.btn').on('click', function () {
       state['type'] = $(this).find('input[name="type"]').val()
-      switch (state['type']) {
+      switch(state['type']) {
       case 'year':
         $week2.removeClass('hide-block')
         break
@@ -225,28 +241,25 @@
         break
       }
     })
-    
+
     // 星期.
     weekHtmlAry.length = 0
     $.map(weekAry, function (v, i) {
       weekHtmlAry.push(
         weekContent.replace(/#\{type\}/g, 'radio')
-                   .replace(/#\{name\}/g, 'week2')
-                   .replace(/#\{label\}/g, v)
-                   .replace(/#\{val\}/g, i + 1)
+        .replace(/#\{name\}/g, 'week2')
+        .replace(/#\{label\}/g, v)
+        .replace(/#\{val\}/g, i + 1)
       )
     })
     $week2.find('.btn-group').html(weekHtmlAry.join(''))
-          .find('.btn').on('click', function () {
-            state.week2 = $(this).find('input[name="week2"]').val()
-          }).end()
-          .children(':first').find('.btn').click()
-    
-
-  })
+      .find('.btn').on('click', function () {
+        state.week2 = $(this).find('input[name="week2"]').val()
+      }).end()
+      .children(':first').find('.btn').click()
 
 
-  function syncState() {
+    // --------- 同步狀態 ---------
     $('.sync').each(function (index) {
       var $el = $(this)
       var key = $el.attr('id')
@@ -254,6 +267,14 @@
         state['' + key + ''] = $(this).find('input[name=' + key + ']').val()
       })
     })
-  }
+
+  })
 
 })(jQuery)
+
+
+var $alertdanger = $('.alert-danger')
+
+function errorHandle(message) {
+  $alertdanger.find('span').text(message).end().removeClass('hide')
+}

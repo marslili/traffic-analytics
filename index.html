@@ -2,307 +2,281 @@
 <html lang="zh-TW">
 
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>臺北市交通巨量資料</title>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/css/bootstrap-select.min.css">
-  
-  <!-- Bootstrap Core CSS -->
-  <link href="css/sandstone/bootstrap.min.css?v=20160820" rel="stylesheet">
-
-  <!-- bootstrap-slider CSS -->
-  <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.3/css/bootstrap-slider.min.css" rel="stylesheet">
-  
-  <!--  bootstrap-datepicker -->
-  <link href="css/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/main.css?v=20160822" rel="stylesheet">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>臺北市交通巨量資料</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/css/bootstrap-select.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/sandstone/bootstrap.min.css?v=20160820" rel="stylesheet">
+    <!-- bootstrap-slider CSS -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.3/css/bootstrap-slider.min.css" rel="stylesheet">
+    <!--  bootstrap-datepicker -->
+    <link href="css/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/main.css?v=20160822" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">臺北市交通巨量資料</a>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active">
-            <a href="#">主題 I</a>
-          </li>
-          <li>
-            <a href="#">主題 II</a>
-          </li>
-          <li>
-            <a href="#">主題 III</a>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
-
-  <!-- Page Content -->
-  <div id="main" class="container">
-
-    <div role="tabpanel">
-
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#traffic" aria-controls="traffic" role="tab" data-toggle="tab" data-index="0">道路擁擠情形</a>
-        </li>
-        <li role="presentation" class="">
-          <a href="#analysis" aria-controls="analysis" role="tab" data-toggle="tab" data-index="1">VD 微觀情形</a>
-        </li>
-      </ul>
-
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active" id="traffic">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <p class="text-left">基於歷史資料，於特定篩選條件下呈現各路段之擁擠情形</p>
-              <br>
-              <div id="panel-filter" class="col-md-5">
-                <!-- 類別 -->
-                <div id="category" class="row text-left sync">
-                  <label>類別</label>
-                  <div class="btn-group btn-group-justified" data-toggle="buttons">
-                    <div class="btn-group" role="group">
-                      <label class="btn btn-primary active">
-                        <input type="radio" name="category" autocomplete="off" value="normal">全年不分節日
-                      </label>
-                    </div>
-                    <div class="btn-group" role="group">
-                      <label class="btn btn-primary">
-                        <input type="radio" name="category" autocomplete="off" value="unusual">特殊節日
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <!-- /類別 -->
-                <!-- 月份 -->
-                <div id="month" class="row text-left">
-                  <label>月份</label>
-                  <div class="btn-group btn-group-justified sync" data-toggle="buttons"></div>
-                </div>
-                <!-- /月份 -->
-                <!-- 星期 -->
-                <div id="week" class="row text-left">
-                  <label>星期</label>
-                  <div class="btn-group btn-group-justified" data-toggle="buttons"></div>
-                </div>
-                <!-- /星期 -->
-                <!-- 日期 -->
-                <div id="calendar" class="row text-left hide">
-                  <label>日期</label>
-                  <div></div>
-                </div>
-                <!-- /日期-->
-                <!-- 時段 -->
-                <div class="row text-left">
-                  <label>時段</label>
-                  <div id="slider">
-                    <input id="interval" type="text" />
-                  </div>
-                </div>
-                <!-- /時段 -->
-                <!-- 雨量 -->
-                <div class="row text-left">
-                  <label>雨量</label>
-                  <div id="rainfall" class="btn-group btn-group-justified sync" data-toggle="buttons">
-                  </div>
-                </div>
-                <!-- /雨量 -->
-                <!-- 氣溫 -->
-                <div class="row text-left">
-                  <label>氣溫</label>
-                  <div id="temperature" class="btn-group btn-group-justified sync" data-toggle="buttons">
-                  </div>
-                </div>
-                <!-- /氣溫 -->
-                <!-- 油價 -->
-                <div class="row text-left">
-                  <label>油價</label>
-                  <div id="oilprice" class="btn-group btn-group-justified sync" data-toggle="buttons">
-                  </div>
-                </div>
-                <!-- /油價 -->
-                <div class="row text-right">
-                  <button type="submit" class="btn btn-primary ">搜尋 <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-
-                </div>
-              </div>
-              <div class="col-md-7">
-                <div class="panel panel-primary panel-map">
-                  <div class="panel-heading text-left">擁擠情形</div>
-                  <div class="panel-body">
-                    <div id="traffic-map"></div>
-                  </div>
-                </div>
-
-              </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">臺北市交通巨量資料</a>
             </div>
-          </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="analysis">
-          <div role="tabpanel" class="tab-pane fade in active" id="traffic">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <p class="text-left">基於歷史資料，呈現過去一年內各VD全年速率變化圖，以及速率與降雨之關係</p>
-              <br>
-              <div id="panel-filter" class="col-md-5">
-                <!-- 類型 -->
-                <div id="" class="row text-right">
-                  <label>類型</label>
-                  <select class="selectpicker">
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                  </select>
-                </div>
-                <!-- /類型 -->
-                <!-- 道路 -->
-                <div id="" class="row text-right">
-                  <label>道路</label>
-                  <select class="selectpicker">
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                  </select>
-                </div>
-                <!-- /道路 -->
-                <!-- VD -->
-                <div id="" class="row text-right">
-                  <label>VD</label>
-                  <select class="selectpicker">
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                  </select>
-                </div>
-                <br>
-                <!-- /VD -->
-                <div class="row text-right">
-                  <div class="panel panel-primary panel-map">
-                    <div class="panel-heading text-left">VD</div>
-                    <div class="panel-body">
-                      <div id="vd-map"></div>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-              <div id="panel-chart" class="col-md-7">
-                <!-- 類別 -->
-                <div id="type" class="row text-left sync">
-                  <div class="btn-group btn-group-justified" data-toggle="buttons">
-                    <div class="btn-group" role="group">
-                      <label class="btn btn-primary active">
-                        <input type="radio" name="type" autocomplete="off" value="year">速率全年變化圖
-                      </label>
-                    </div>
-                    <div class="btn-group" role="group">
-                      <label class="btn btn-primary">
-                        <input type="radio" name="type" autocomplete="off" value="rainfall">速率與降雨之關係
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <!-- /類別 -->
-                <!-- 星期2 -->
-                <div id="week2" class="row text-left">
-                  <div class="btn-group btn-group-justified" data-toggle="buttons"></div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <!-- /星期 -->
-                <div class="row text-left">
-                  <div class="panel panel-primary panel-map">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">圖表</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div id="chart">
-                        <img src="image/fake-chart.png">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">主題 I</a>
+                    </li>
+                    <li>
+                        <a href="#">主題 II</a>
+                    </li>
+                    <li>
+                        <a href="#">主題 III</a>
+                    </li>
+                </ul>
             </div>
-          </div>
+            <!-- /.navbar-collapse -->
         </div>
-      </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div id="main" class="container">
+        <div class="alert alert-dismissible alert-danger hide">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <span></span>
+        </div>
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#traffic" aria-controls="traffic" role="tab" data-toggle="tab" data-index="0">道路擁擠情形</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#analysis" aria-controls="analysis" role="tab" data-toggle="tab" data-index="1">VD 微觀情形</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="traffic">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="well well-sm text-left">
+                                基於歷史資料，於特定篩選條件下呈現各路段之擁擠情形
+                            </div>
+                            <div id="panel-filter" class="col-md-5">
+                                <!-- 類別 -->
+                                <div id="category" class="row text-left sync">
+                                    <label>類別</label>
+                                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                        <div class="btn-group" role="group">
+                                            <label class="btn btn-primary active">
+                                                <input type="radio" name="category" autocomplete="off" value="normal">全年不分節日
+                                            </label>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <label class="btn btn-primary">
+                                                <input type="radio" name="category" autocomplete="off" value="unusual">特殊節日
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /類別 -->
+                                <!-- 月份 -->
+                                <div id="month" class="row text-left">
+                                    <label>月份</label>
+                                    <div class="btn-group btn-group-justified sync" data-toggle="buttons"></div>
+                                </div>
+                                <!-- /月份 -->
+                                <!-- 星期 -->
+                                <div id="week" class="row text-left">
+                                    <label>星期</label>
+                                    <div class="btn-group btn-group-justified" data-toggle="buttons"></div>
+                                </div>
+                                <!-- /星期 -->
+                                <!-- 日期 -->
+                                <div id="calendar" class="row text-left hide">
+                                    <label>日期</label>
+                                    <div class="well"></div>
+                                </div>
+                                <!-- /日期-->
+                                <!-- 時段 -->
+                                <div class="row text-left">
+                                    <label>時段</label>
+                                    <div id="slider">
+                                        <input id="interval" type="text" />
+                                    </div>
+                                </div>
+                                <!-- /時段 -->
+                                <!-- 雨量 -->
+                                <div class="row text-left">
+                                    <label>雨量</label>
+                                    <div id="rainfall" class="btn-group btn-group-justified sync" data-toggle="buttons">
+                                    </div>
+                                </div>
+                                <!-- /雨量 -->
+                                <!-- 氣溫 -->
+                                <div class="row text-left">
+                                    <label>氣溫</label>
+                                    <div id="temperature" class="btn-group btn-group-justified sync" data-toggle="buttons">
+                                    </div>
+                                </div>
+                                <!-- /氣溫 -->
+                                <!-- 油價 -->
+                                <div class="row text-left">
+                                    <label>油價</label>
+                                    <div id="oilprice" class="btn-group btn-group-justified sync" data-toggle="buttons">
+                                    </div>
+                                </div>
+                                <!-- /油價 -->
+                                <div class="row text-right">
+                                    <button type="submit" class="btn btn-primary ">搜尋 <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="panel panel-default panel-map">
+                                    <div class="panel-heading text-left">擁擠情形</div>
+                                    <div class="panel-body">
+                                        <div id="traffic-map"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="analysis">
+                    <div role="tabpanel" class="tab-pane fade in active" id="traffic">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <div class="well well-sm text-left">基於歷史資料，呈現過去一年內各VD全年速率變化圖，以及速率與降雨之關係</div>
+                                <div id="panel-filter" class="col-md-5">
+                                    <!-- 類型 -->
+                                    <div class="row text-right">
+                                        <label>類型</label>
+                                        <select data-select="type" class="selectpicker">
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </div>
+                                    <!-- /類型 -->
+                                    <!-- 道路 -->
+                                    <div class="row text-right">
+                                        <label>道路</label>
+                                        <select data-select="road" class="selectpicker">
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </div>
+                                    <!-- /道路 -->
+                                    <!-- VD -->
+                                    <div class="row text-right">
+                                        <label>&nbsp;VD</label>
+                                        <select data-select="vd" class="selectpicker">
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <!-- /VD -->
+                                    <div class="row text-right">
+                                        <div class="panel panel-default panel-map">
+                                            <div class="panel-heading text-left">VD</div>
+                                            <div class="panel-body">
+                                                <div id="vd-map"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="panel-chart" class="col-md-7">
+                                    <!-- 類別 -->
+                                    <div id="type" class="row text-left sync">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group" role="group">
+                                                <label class="btn btn-primary active">
+                                                    <input type="radio" name="type" autocomplete="off" value="year">速率全年變化圖
+                                                </label>
+                                            </div>
+                                            <div class="btn-group" role="group">
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="type" autocomplete="off" value="rainfall">速率與降雨之關係
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /類別 -->
+                                    <!-- 星期2 -->
+                                    <div id="week2" class="row text-left">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons"></div>
+                                    </div>
+                                    <!-- /星期 -->
+                                    <div class="row text-left">
+                                        <div class="panel panel-default panel-map">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">圖表</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id="chart">
+                                                    <img src="image/fake-chart.png">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+        <script>
+        var trafficMap, VDMap;
 
-    </div>
+        function initMap() {
+            console.log('map init')
+            trafficMap = new google.maps.Map(document.getElementById('traffic-map'), {
+                center: {
+                    lat: 25.041650,
+                    lng: 121.543801
+                },
+                zoom: 12
+            })
 
-  </div>
-  <!-- /.container -->
-  <script>
-    var trafficMap, VDMap;
-
-    function initMap() {
-      console.log('map init')
-      trafficMap = new google.maps.Map(document.getElementById('traffic-map'), {
-        center: {
-          lat: 25.041650,
-          lng: 121.543801
-        },
-        zoom: 12
-      })
-      
-    }
-  </script>
-  <script src="//maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-
-  <!-- jQuery -->
-  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
-
-  <!-- Bootstrap Core JavaScript -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <!-- bootstrap-slider JavaScript-->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.3/bootstrap-slider.min.js"></script>
-  
-  <!-- bootstrap-datepicker -->
-  <script src="js/bootstrap-datepicker.min.js"></script>
-    
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/js/bootstrap-select.min.js"></script>
-
-  <script src="js/main.js?v=20160822"></script>
-
+        }
+        </script>
+        <script src="//maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+        <!-- jQuery -->
+        <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- bootstrap-slider JavaScript-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.1.3/bootstrap-slider.min.js"></script>
+        <!-- bootstrap-datepicker -->
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/js/bootstrap-select.min.js"></script>
+        <script src="js/main.js?v=20160822"></script>
 </body>
 
 </html>
