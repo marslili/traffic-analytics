@@ -17,7 +17,7 @@
     <!--  bootstrap-datepicker -->
     <link href="css/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/main.min.css?v=20160823" rel="stylesheet">
+    <link href="css/main.min.css?v=20160825" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -167,7 +167,7 @@
                         <div class="row">
                             <div class="col-lg-12 text-center">
                                 <div class="well well-sm text-left">基於歷史資料，呈現過去一年內各VD全年速率變化圖，以及速率與降雨之關係</div>
-                                <div id="panel-filter" class="col-md-5">
+                                <div id="panel-filter" class="col-md-4">
                                     <!-- 類型 -->
                                     <div class="row text-right">
                                         <label>類型</label>
@@ -197,18 +197,7 @@
                                             <option>C</option>
                                         </select>
                                     </div>
-                                    <br>
                                     <!-- /VD -->
-                                    <div class="row text-right">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading text-left">VD</div>
-                                            <div class="panel-body padding-zero">
-                                                <div id="vd-map"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="panel-chart" class="col-md-7">
                                     <!-- 類別 -->
                                     <div id="type" class="row text-left sync">
                                         <div class="btn-group btn-group-justified" data-toggle="buttons">
@@ -230,6 +219,16 @@
                                         <div class="btn-group btn-group-justified" data-toggle="buttons"></div>
                                     </div>
                                     <!-- /星期 -->
+                                    <div class="row text-right">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading text-left">VD</div>
+                                            <div class="panel-body padding-zero">
+                                                <div id="vd-map"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="panel-chart" class="col-md-8">
                                     <div class="row text-left">
                                         <div class="panel panel-default panel-map">
                                             <div class="panel-heading">
@@ -237,7 +236,7 @@
                                             </div>
                                             <div class="panel-body">
                                                 <div id="chart">
-                                                    <img src="image/fake-chart.png">
+                                                    <img src="image/fake-chart.jpg" width="600">
                                                 </div>
                                             </div>
                                         </div>
@@ -276,7 +275,7 @@
         <script src="js/bootstrap-datepicker.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.0/js/bootstrap-select.min.js"></script>
-        <script src="js/main.min.js?v=20160823"></script>
+        <script src="js/main.min.js?v=20160825"></script>
 </body>
 
 </html>

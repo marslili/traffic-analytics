@@ -218,7 +218,7 @@
     } else {
       $('.selectpicker').selectpicker({
         style: 'btn-primary',
-        width: '85%',
+        width: '80%',
         size: 4
       })
     }
